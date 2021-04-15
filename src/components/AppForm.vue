@@ -6,10 +6,10 @@
         id="columns"
         type="number"
         min="0"
-        max="12"
+        max="24"
         @input="$store.commit(`updateColumns`, $event.target.value)"
         :value="columns"
-      >
+      />
     </fieldset>
 
     <fieldset>
@@ -18,14 +18,17 @@
         id="rows"
         type="number"
         min="0"
-        max="12"
+        max="24"
         @input="$store.commit(`updateRows`, $event.target.value)"
         :value="rows"
-      >
+      />
     </fieldset>
 
     <fieldset>
-      <label for="columngap">{{ $t("form.columngap") }} <span class="label-extra-info">{{ $t("form.units") }}</span></label>
+      <label for="columngap"
+        >{{ $t("form.columngap") }}
+        <span class="label-extra-info">{{ $t("form.units") }}</span></label
+      >
       <input
         id="columngap"
         type="number"
@@ -33,11 +36,14 @@
         max="50"
         @input="$store.commit(`updateColumnGap`, $event.target.value)"
         :value="columngap"
-      >
+      />
     </fieldset>
 
     <fieldset>
-      <label for="rowgap">{{ $t("form.rowgap") }} <span class="label-extra-info">{{ $t("form.units") }}</span></label>
+      <label for="rowgap"
+        >{{ $t("form.rowgap") }}
+        <span class="label-extra-info">{{ $t("form.units") }}</span></label
+      >
       <input
         id="rowgap"
         type="number"
@@ -45,15 +51,17 @@
         max="50"
         @input="$store.commit(`updateRowGap`, $event.target.value)"
         :value="rowgap"
-      >
+      />
     </fieldset>
 
     <button @click="showCodeModal = true">{{ $t("form.codebutton") }}</button>
-    <button type="reset" @click="$store.commit(`resetGrid`)">{{ $t("form.reset") }}</button>
+    <button type="reset" @click="$store.commit(`resetGrid`)">
+      {{ $t("form.reset") }}
+    </button>
     <app-modal v-if="showCodeModal" @close="showCodeModal = false">
       <h3 slot="header">{{ $t("modal.header.yourcode") }}</h3>
       <div slot="body">
-        <app-code/>
+        <app-code />
       </div>
     </app-modal>
 
@@ -61,7 +69,7 @@
     <app-modal v-if="showExplainModal" @close="showExplainModal = false">
       <h3 slot="header">{{ $t("modal.header.what") }}</h3>
       <div slot="body">
-        <app-explain/>
+        <app-explain />
       </div>
     </app-modal>
   </aside>
@@ -71,29 +79,30 @@
 import AppExplain from "./AppExplain.vue";
 import AppModal from "./AppModal.vue";
 import AppCode from "./AppCode.vue";
+import { setStoreByUrlParams } from "../store-helper";
 import { mapState } from "vuex";
 
 export default {
   components: {
     AppExplain,
     AppModal,
-    AppCode
+    AppCode,
   },
   data() {
     return {
       showCodeModal: false,
-      showExplainModal: false
+      showExplainModal: false,
     };
   },
   computed: {
-    ...mapState(["columngap", "rowgap", "columns", "rows"])
+    ...mapState(["columngap", "rowgap", "columns", "rows"]),
   },
   watch: {
     columns(newVal, oldVal) {
       let payload = {
         newVal,
         oldVal,
-        direction: "colArr"
+        direction: "colArr",
       };
       this.$store.commit("adjustArr", payload);
     },
@@ -101,11 +110,14 @@ export default {
       let payload = {
         newVal,
         oldVal,
-        direction: "rowArr"
+        direction: "rowArr",
       };
       this.$store.commit("adjustArr", payload);
-    }
-  }
+    },
+  },
+  mounted: function() {
+    setStoreByUrlParams(this.$store);
+  },
 };
 </script>
 
@@ -131,7 +143,7 @@ aside {
     width: 80vw;
     margin: 100px 50px;
   }
-  button[type=reset]{
+  button[type="reset"] {
     margin-left: 20px;
   }
 }

@@ -21,7 +21,9 @@
         class="copycode"
         @click.stop.prevent="copy"
       >
-        <template v-if="codeWasCopied">{{ $t("modal.copy.clipboardSuccess") }}</template>
+        <template v-if="codeWasCopied">{{
+          $t("modal.copy.clipboardSuccess")
+        }}</template>
         <template v-else>{{ $t("modal.copy.clipboard") }}</template>
       </button>
 
@@ -29,63 +31,70 @@
         <div v-if="showHtml">
           <p>
             &lt;<span class="cname">div </span>
-            <span class="cprop">class="parent"</span>&gt;
-            <br>
+            <span class="cprop">class="Grid"</span>&gt;
+            <br />
             <span v-if="childarea.length > 0">
               <span v-for="(child, i) in childarea" :key="child">
                 <span class="sp">
                   &lt;<span class="cname">div</span>
-                  <span class="cprop">&nbsp;class="div{{ i + 1 }}"</span>&gt;
+                  <span class="cprop">&nbsp;class="Item{{ i }}"</span>&gt;
                   &lt;/<span class="cname">div</span>&gt;
                 </span>
-                <br>
+                <br />
               </span>
             </span>
             <span v-else>
-              <br>
+              <br />
             </span>
             &lt;/<span class="cname">div</span>&gt;
           </p>
         </div>
         <div v-else>
           <p>
-            <span class="cname">.parent</span> {
-            <br>
+            <span class=""
+              >/* Make sure to change <span class="cname">Grid0</span> */</span
+            >
+            <br />
+            <span class="cname">.Grid0</span> {
+            <br />
             <span class="sp">
               <span class="ckey">display</span>:
               <span class="cprop">grid</span>;
             </span>
-            <br>
+            <br />
             <span class="sp">
               <span class="ckey">grid-template-columns</span>:
-              <span class="cprop">{{ colTemplate }}</span>;
+              <span class="cprop">{{ colTemplate }}</span
+              >;
             </span>
-            <br>
+            <br />
             <span class="sp">
               <span class="ckey">grid-template-rows</span>:
-              <span class="cprop">{{ rowTemplate }}</span>;
+              <span class="cprop">{{ rowTemplate }}</span
+              >;
             </span>
-            <br>
+            <br />
             <span class="sp">
               <span class="ckey">grid-column-gap</span>:
               <span class="cprop">{{ columngap }}px;</span>
             </span>
-            <br>
+            <br />
             <span class="sp">
               <span class="ckey">grid-row-gap</span>:
               <span class="cprop">{{ rowgap }}px</span>;
-            </span> 
-            <br>}
+            </span>
+            <br />}
           </p>
           <p>
             <span v-if="childarea.length > 0">
               <span v-for="(child, i) in childarea" :key="child">
                 <span>
-                  <span class="cname">.div{{ i + 1 }}</span> {
+                  <span class="cname">.Item{{ i }}</span> {
                   <span class="ckey">grid-area</span>:
-                  <span class="cprop">{{ child }}</span>; }
+                  <span class="cprop">{{ child }}</span
+                  >; }
                 </span>
-                <br>
+                <br />
               </span>
             </span>
           </p>
@@ -103,12 +112,12 @@ export default {
   data() {
     return {
       codeWasCopied: false,
-      showHtml: false
+      showHtml: false,
     };
   },
   computed: {
     ...mapState(["columngap", "rowgap", "childarea"]),
-    ...mapGetters(["rowTemplate", "colTemplate"])
+    ...mapGetters(["rowTemplate", "colTemplate"]),
   },
   methods: {
     copy() {
@@ -139,8 +148,8 @@ export default {
     },
     toggleHtml() {
       this.showHtml = !this.showHtml;
-    }
-  }
+    },
+  },
 };
 </script>
 

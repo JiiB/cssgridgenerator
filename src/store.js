@@ -12,7 +12,7 @@ export default new Vuex.Store({
     rowgap: 0,
     colArr: [],
     rowArr: [],
-    childarea: []
+    childarea: [],
   },
   getters: {
     colTemplate(state) {
@@ -25,28 +25,28 @@ export default new Vuex.Store({
     },
     divNum(state) {
       return Math.max(state.columns, 0) * Math.max(state.rows, 0);
-    }
+    },
   },
   mutations: {
     initialArrIndex(state, payload) {
-      if(payload !== '') {
-        const queryParams = new URLSearchParams(payload)
+      // if(payload !== '') {
+      //   const queryParams = new URLSearchParams(payload)
 
-        for (const stateKey in state) {
-          const paramIsValid = queryParams.has(stateKey)
-          const paramType = typeof(state[stateKey])
+      //   for (const stateKey in state) {
+      //     const paramIsValid = queryParams.has(stateKey)
+      //     const paramType = typeof(state[stateKey])
 
-          if(paramIsValid && paramType === 'number') {
-            state[stateKey] = queryParams.get(stateKey);
-          }
-          else if (paramIsValid && paramType === 'object') {
-            state[stateKey] = JSON.parse(queryParams.get(stateKey))
-          }
-        }
-      } else {
-          createArr(state.columns, state.colArr);
-          createArr(state.rows, state.rowArr);
-      }
+      //     if(paramIsValid && paramType === 'number') {
+      //       state[stateKey] = queryParams.get(stateKey);
+      //     }
+      //     else if (paramIsValid && paramType === 'object') {
+      //       state[stateKey] = JSON.parse(queryParams.get(stateKey))
+      //     }
+      //   }
+      // } else {
+      createArr(state.columns, state.colArr);
+      createArr(state.rows, state.rowArr);
+      // }
     },
     adjustArr(state, payload) {
       let newVal = Math.max(Number(payload.newVal), 0),
@@ -77,6 +77,9 @@ export default new Vuex.Store({
     updateRows(state, payload) {
       state.rows = payload;
     },
+    updateChildarea(state, payload) {
+      state.childarea = payload;
+    },
     updateColumnGap(state, payload) {
       state.columngap = payload;
     },
@@ -85,8 +88,8 @@ export default new Vuex.Store({
     },
     resetGrid(state, payload) {
       state.childarea = [];
-    }
-  }
+    },
+  },
 });
 
 //we start off with just a few rows and columns filled with 1fr units
