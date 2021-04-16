@@ -1,10 +1,19 @@
-<a href="https://www.netlify.com">
-  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"/>
-</a>
-
 # CSS Grid Generator
 
-### Site: [https://cssgrid-generator.netlify.com/](https://cssgrid-generator.netlify.com/)
+### Site: [http://JiiB.github.io/cssgridgenerator](http://JiiB.github.io/cssgridgenerator)
+
+## Load an existing config
+
+Use the following queryParams:
+
+| param name  | description                                                                                    |
+| ----------- | ---------------------------------------------------------------------------------------------- |
+| `columns`   | to set the number of columns                                                                   |
+| `rows`      | to set the number of rows                                                                      |
+| `childarea` | grid config url encoded (`encodeURIComponent("1/1/2/25,2/1/3/25,3/1/4/25,4/1/5/25,5/1/6/25")`) |
+
+<br/>
+<br/>
 
 ![CSS Grid Generator](https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/og-cssgrid.jpg)
 
