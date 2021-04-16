@@ -12,6 +12,8 @@ Use the following queryParams:
 | `rows`      | to set the number of rows                                                                      |
 | `childarea` | grid config url encoded (`encodeURIComponent("1/1/2/25,2/1/3/25,3/1/4/25,4/1/5/25,5/1/6/25")`) |
 
+Example: https://jiib.github.io/cssgridgenerator/?columns=24&rows=8&childarea=1%2F1%2F4%2F19%2C1%2F19%2F2%2F25%2C2%2F19%2F3%2F25%2C3%2F19%2F4%2F25%2C4%2F1%2F6%2F7%2C4%2F7%2F6%2F13%2C4%2F13%2F7%2F25%2C6%2F1%2F9%2F13%2C7%2F13%2F9%2F19%2C7%2F19%2F9%2F25
+
 <br/>
 <br/>
 
