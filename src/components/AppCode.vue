@@ -70,7 +70,7 @@
             <br />
             <span class="sp">
               <span class="ckey">grid-template-rows</span>:
-              <span class="cprop">{{ rowTemplate }}</span
+              <span class="cprop">{{ rowTemplate.replace("1fr", "auto") }}</span
               >;
             </span>
             <br />
